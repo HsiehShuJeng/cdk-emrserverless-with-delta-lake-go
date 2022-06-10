@@ -1,1 +1,2 @@
 # cdk-emrserverless-with-delta-lake-go
+Go bindings for [cdk-emrserverless-with-delta-lake](https://github.com/HsiehShuJeng/cdk-emrserverless-with-delta-lake). These are automatically updated from the [cdk-emrserverless-with-delta-lake](https://github.com/HsiehShuJeng/cdk-emrserverless-with-delta-lake) repository - if you would like to report a bug or make a pull request, please submit it there.  
