@@ -68,6 +68,9 @@ func (j *jsiiProxy_EmrStudioDeveloperStack) Product() awsservicecatalog.Product 
 func NewEmrStudioDeveloperStack(scope constructs.Construct, name *string, props *EmrStudioDeveloperStackProps) EmrStudioDeveloperStack {
 	_init_.Initialize()
 
+	if err := validateNewEmrStudioDeveloperStackParameters(scope, name, props); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_EmrStudioDeveloperStack{}
 
 	_jsii_.Create(
@@ -109,6 +112,9 @@ func NewEmrStudioDeveloperStack_Override(e EmrStudioDeveloperStack, scope constr
 func EmrStudioDeveloperStack_IsConstruct(x interface{}) *bool {
 	_init_.Initialize()
 
+	if err := validateEmrStudioDeveloperStack_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
 	var returns *bool
 
 	_jsii_.StaticInvoke(

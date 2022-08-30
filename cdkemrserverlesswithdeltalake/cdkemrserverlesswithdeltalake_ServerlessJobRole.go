@@ -57,6 +57,9 @@ func (j *jsiiProxy_ServerlessJobRole) Node() constructs.Node {
 func NewServerlessJobRole(scope constructs.Construct, name *string, props *ServerlessJobRoleProps) ServerlessJobRole {
 	_init_.Initialize()
 
+	if err := validateNewServerlessJobRoleParameters(scope, name, props); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_ServerlessJobRole{}
 
 	_jsii_.Create(
@@ -98,6 +101,9 @@ func NewServerlessJobRole_Override(s ServerlessJobRole, scope constructs.Constru
 func ServerlessJobRole_IsConstruct(x interface{}) *bool {
 	_init_.Initialize()
 
+	if err := validateServerlessJobRole_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
 	var returns *bool
 
 	_jsii_.StaticInvoke(

@@ -59,6 +59,9 @@ func (j *jsiiProxy_EmrStudioServiceRole) RoleEntity() awsiam.Role {
 func NewEmrStudioServiceRole(scope constructs.Construct, name *string, props *EmrStudioServiceRoleProps) EmrStudioServiceRole {
 	_init_.Initialize()
 
+	if err := validateNewEmrStudioServiceRoleParameters(scope, name, props); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_EmrStudioServiceRole{}
 
 	_jsii_.Create(
@@ -100,6 +103,9 @@ func NewEmrStudioServiceRole_Override(e EmrStudioServiceRole, scope constructs.C
 func EmrStudioServiceRole_IsConstruct(x interface{}) *bool {
 	_init_.Initialize()
 
+	if err := validateEmrStudioServiceRole_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
 	var returns *bool
 
 	_jsii_.StaticInvoke(

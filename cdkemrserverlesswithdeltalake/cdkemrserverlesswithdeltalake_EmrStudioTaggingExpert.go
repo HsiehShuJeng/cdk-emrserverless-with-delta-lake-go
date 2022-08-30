@@ -52,6 +52,9 @@ func (j *jsiiProxy_EmrStudioTaggingExpert) Node() constructs.Node {
 func NewEmrStudioTaggingExpert(scope constructs.Construct, name *string) EmrStudioTaggingExpert {
 	_init_.Initialize()
 
+	if err := validateNewEmrStudioTaggingExpertParameters(scope, name); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_EmrStudioTaggingExpert{}
 
 	_jsii_.Create(
@@ -93,6 +96,9 @@ func NewEmrStudioTaggingExpert_Override(e EmrStudioTaggingExpert, scope construc
 func EmrStudioTaggingExpert_IsConstruct(x interface{}) *bool {
 	_init_.Initialize()
 
+	if err := validateEmrStudioTaggingExpert_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
 	var returns *bool
 
 	_jsii_.StaticInvoke(

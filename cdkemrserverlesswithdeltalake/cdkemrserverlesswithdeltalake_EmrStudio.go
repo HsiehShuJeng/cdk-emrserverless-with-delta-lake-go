@@ -61,6 +61,9 @@ func (j *jsiiProxy_EmrStudio) Node() constructs.Node {
 func NewEmrStudio(scope constructs.Construct, name *string, props *EmrStudioProps) EmrStudio {
 	_init_.Initialize()
 
+	if err := validateNewEmrStudioParameters(scope, name, props); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_EmrStudio{}
 
 	_jsii_.Create(
@@ -102,6 +105,9 @@ func NewEmrStudio_Override(e EmrStudio, scope constructs.Construct, name *string
 func EmrStudio_IsConstruct(x interface{}) *bool {
 	_init_.Initialize()
 
+	if err := validateEmrStudio_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
 	var returns *bool
 
 	_jsii_.StaticInvoke(

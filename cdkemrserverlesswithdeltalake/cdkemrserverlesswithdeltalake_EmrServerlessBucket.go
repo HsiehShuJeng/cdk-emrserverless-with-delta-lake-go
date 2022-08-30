@@ -53,6 +53,9 @@ func (j *jsiiProxy_EmrServerlessBucket) Node() constructs.Node {
 func NewEmrServerlessBucket(scope constructs.Construct, name *string, props *EmrServerlessBucketProps) EmrServerlessBucket {
 	_init_.Initialize()
 
+	if err := validateNewEmrServerlessBucketParameters(scope, name, props); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_EmrServerlessBucket{}
 
 	_jsii_.Create(
@@ -94,6 +97,9 @@ func NewEmrServerlessBucket_Override(e EmrServerlessBucket, scope constructs.Con
 func EmrServerlessBucket_IsConstruct(x interface{}) *bool {
 	_init_.Initialize()
 
+	if err := validateEmrServerlessBucket_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
 	var returns *bool
 
 	_jsii_.StaticInvoke(

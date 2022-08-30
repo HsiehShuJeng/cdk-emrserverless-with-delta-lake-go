@@ -75,6 +75,9 @@ func (j *jsiiProxy_EmrServerless) Node() constructs.Node {
 func NewEmrServerless(scope constructs.Construct, name *string, props *EmrServerlessProps) EmrServerless {
 	_init_.Initialize()
 
+	if err := validateNewEmrServerlessParameters(scope, name, props); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_EmrServerless{}
 
 	_jsii_.Create(
@@ -116,6 +119,9 @@ func NewEmrServerless_Override(e EmrServerless, scope constructs.Construct, name
 func EmrServerless_IsConstruct(x interface{}) *bool {
 	_init_.Initialize()
 
+	if err := validateEmrServerless_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
 	var returns *bool
 
 	_jsii_.StaticInvoke(

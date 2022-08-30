@@ -542,6 +542,9 @@ func (j *jsiiProxy_EmrClusterTemplateStack) UrlSuffix() *string {
 func NewEmrClusterTemplateStack(scope constructs.Construct, id *string) EmrClusterTemplateStack {
 	_init_.Initialize()
 
+	if err := validateNewEmrClusterTemplateStackParameters(scope, id); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_EmrClusterTemplateStack{}
 
 	_jsii_.Create(
@@ -583,6 +586,9 @@ func NewEmrClusterTemplateStack_Override(e EmrClusterTemplateStack, scope constr
 func EmrClusterTemplateStack_IsConstruct(x interface{}) *bool {
 	_init_.Initialize()
 
+	if err := validateEmrClusterTemplateStack_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
 	var returns *bool
 
 	_jsii_.StaticInvoke(
@@ -601,6 +607,9 @@ func EmrClusterTemplateStack_IsConstruct(x interface{}) *bool {
 func EmrClusterTemplateStack_IsStack(x interface{}) *bool {
 	_init_.Initialize()
 
+	if err := validateEmrClusterTemplateStack_IsStackParameters(x); err != nil {
+		panic(err)
+	}
 	var returns *bool
 
 	_jsii_.StaticInvoke(
@@ -619,6 +628,9 @@ func EmrClusterTemplateStack_IsStack(x interface{}) *bool {
 func EmrClusterTemplateStack_Of(construct constructs.IConstruct) awscdk.Stack {
 	_init_.Initialize()
 
+	if err := validateEmrClusterTemplateStack_OfParameters(construct); err != nil {
+		panic(err)
+	}
 	var returns awscdk.Stack
 
 	_jsii_.StaticInvoke(
@@ -632,6 +644,9 @@ func EmrClusterTemplateStack_Of(construct constructs.IConstruct) awscdk.Stack {
 }
 
 func (e *jsiiProxy_EmrClusterTemplateStack) AddDependency(target awscdk.Stack, reason *string) {
+	if err := e.validateAddDependencyParameters(target); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		e,
 		"addDependency",
@@ -640,6 +655,9 @@ func (e *jsiiProxy_EmrClusterTemplateStack) AddDependency(target awscdk.Stack, r
 }
 
 func (e *jsiiProxy_EmrClusterTemplateStack) AddTransform(transform *string) {
+	if err := e.validateAddTransformParameters(transform); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		e,
 		"addTransform",
@@ -648,6 +666,9 @@ func (e *jsiiProxy_EmrClusterTemplateStack) AddTransform(transform *string) {
 }
 
 func (e *jsiiProxy_EmrClusterTemplateStack) AllocateLogicalId(cfnElement awscdk.CfnElement) *string {
+	if err := e.validateAllocateLogicalIdParameters(cfnElement); err != nil {
+		panic(err)
+	}
 	var returns *string
 
 	_jsii_.Invoke(
@@ -661,6 +682,9 @@ func (e *jsiiProxy_EmrClusterTemplateStack) AllocateLogicalId(cfnElement awscdk.
 }
 
 func (e *jsiiProxy_EmrClusterTemplateStack) ExportValue(exportedValue interface{}, options *awscdk.ExportValueOptions) *string {
+	if err := e.validateExportValueParameters(exportedValue, options); err != nil {
+		panic(err)
+	}
 	var returns *string
 
 	_jsii_.Invoke(
@@ -674,6 +698,9 @@ func (e *jsiiProxy_EmrClusterTemplateStack) ExportValue(exportedValue interface{
 }
 
 func (e *jsiiProxy_EmrClusterTemplateStack) FormatArn(components *awscdk.ArnComponents) *string {
+	if err := e.validateFormatArnParameters(components); err != nil {
+		panic(err)
+	}
 	var returns *string
 
 	_jsii_.Invoke(
@@ -687,6 +714,9 @@ func (e *jsiiProxy_EmrClusterTemplateStack) FormatArn(components *awscdk.ArnComp
 }
 
 func (e *jsiiProxy_EmrClusterTemplateStack) GetLogicalId(element awscdk.CfnElement) *string {
+	if err := e.validateGetLogicalIdParameters(element); err != nil {
+		panic(err)
+	}
 	var returns *string
 
 	_jsii_.Invoke(
@@ -700,6 +730,9 @@ func (e *jsiiProxy_EmrClusterTemplateStack) GetLogicalId(element awscdk.CfnEleme
 }
 
 func (e *jsiiProxy_EmrClusterTemplateStack) RegionalFact(factName *string, defaultValue *string) *string {
+	if err := e.validateRegionalFactParameters(factName); err != nil {
+		panic(err)
+	}
 	var returns *string
 
 	_jsii_.Invoke(
@@ -713,6 +746,9 @@ func (e *jsiiProxy_EmrClusterTemplateStack) RegionalFact(factName *string, defau
 }
 
 func (e *jsiiProxy_EmrClusterTemplateStack) RenameLogicalId(oldId *string, newId *string) {
+	if err := e.validateRenameLogicalIdParameters(oldId, newId); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		e,
 		"renameLogicalId",
@@ -721,6 +757,9 @@ func (e *jsiiProxy_EmrClusterTemplateStack) RenameLogicalId(oldId *string, newId
 }
 
 func (e *jsiiProxy_EmrClusterTemplateStack) ReportMissingContextKey(report *cloudassemblyschema.MissingContext) {
+	if err := e.validateReportMissingContextKeyParameters(report); err != nil {
+		panic(err)
+	}
 	_jsii_.InvokeVoid(
 		e,
 		"reportMissingContextKey",
@@ -729,6 +768,9 @@ func (e *jsiiProxy_EmrClusterTemplateStack) ReportMissingContextKey(report *clou
 }
 
 func (e *jsiiProxy_EmrClusterTemplateStack) Resolve(obj interface{}) interface{} {
+	if err := e.validateResolveParameters(obj); err != nil {
+		panic(err)
+	}
 	var returns interface{}
 
 	_jsii_.Invoke(
@@ -742,6 +784,9 @@ func (e *jsiiProxy_EmrClusterTemplateStack) Resolve(obj interface{}) interface{}
 }
 
 func (e *jsiiProxy_EmrClusterTemplateStack) SplitArn(arn *string, arnFormat awscdk.ArnFormat) *awscdk.ArnComponents {
+	if err := e.validateSplitArnParameters(arn, arnFormat); err != nil {
+		panic(err)
+	}
 	var returns *awscdk.ArnComponents
 
 	_jsii_.Invoke(
@@ -755,6 +800,9 @@ func (e *jsiiProxy_EmrClusterTemplateStack) SplitArn(arn *string, arnFormat awsc
 }
 
 func (e *jsiiProxy_EmrClusterTemplateStack) ToJsonString(obj interface{}, space *float64) *string {
+	if err := e.validateToJsonStringParameters(obj); err != nil {
+		panic(err)
+	}
 	var returns *string
 
 	_jsii_.Invoke(

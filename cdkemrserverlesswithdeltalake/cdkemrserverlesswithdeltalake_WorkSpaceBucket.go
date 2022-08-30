@@ -48,6 +48,9 @@ func (j *jsiiProxy_WorkSpaceBucket) Node() constructs.Node {
 func NewWorkSpaceBucket(scope constructs.Construct, name *string, props *WorkSpaceBucketProps) WorkSpaceBucket {
 	_init_.Initialize()
 
+	if err := validateNewWorkSpaceBucketParameters(scope, name, props); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_WorkSpaceBucket{}
 
 	_jsii_.Create(
@@ -89,6 +92,9 @@ func NewWorkSpaceBucket_Override(w WorkSpaceBucket, scope constructs.Construct, 
 func WorkSpaceBucket_IsConstruct(x interface{}) *bool {
 	_init_.Initialize()
 
+	if err := validateWorkSpaceBucket_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
 	var returns *bool
 
 	_jsii_.StaticInvoke(

@@ -59,6 +59,9 @@ func (j *jsiiProxy_EmrStudioWorkspaceSecurityGroup) Node() constructs.Node {
 func NewEmrStudioWorkspaceSecurityGroup(scope constructs.Construct, name *string, props *EmrStudioWorkspaceSecurityGroupProps) EmrStudioWorkspaceSecurityGroup {
 	_init_.Initialize()
 
+	if err := validateNewEmrStudioWorkspaceSecurityGroupParameters(scope, name, props); err != nil {
+		panic(err)
+	}
 	j := jsiiProxy_EmrStudioWorkspaceSecurityGroup{}
 
 	_jsii_.Create(
@@ -100,6 +103,9 @@ func NewEmrStudioWorkspaceSecurityGroup_Override(e EmrStudioWorkspaceSecurityGro
 func EmrStudioWorkspaceSecurityGroup_IsConstruct(x interface{}) *bool {
 	_init_.Initialize()
 
+	if err := validateEmrStudioWorkspaceSecurityGroup_IsConstructParameters(x); err != nil {
+		panic(err)
+	}
 	var returns *bool
 
 	_jsii_.StaticInvoke(
