@@ -1,5 +1,4 @@
 //go:build no_runtime_type_checking
-// +build no_runtime_type_checking
 
 // A construct for the quick demo of EMR Serverless.
 package cdkemrserverlesswithdeltalake
@@ -10,11 +9,19 @@ func (e *jsiiProxy_EmrClusterTemplateStack) validateAddDependencyParameters(targ
 	return nil
 }
 
+func (e *jsiiProxy_EmrClusterTemplateStack) validateAddMetadataParameters(key *string, value interface{}) error {
+	return nil
+}
+
 func (e *jsiiProxy_EmrClusterTemplateStack) validateAddTransformParameters(transform *string) error {
 	return nil
 }
 
 func (e *jsiiProxy_EmrClusterTemplateStack) validateAllocateLogicalIdParameters(cfnElement awscdk.CfnElement) error {
+	return nil
+}
+
+func (e *jsiiProxy_EmrClusterTemplateStack) validateExportStringListValueParameters(exportedValue interface{}, options *awscdk.ExportValueOptions) error {
 	return nil
 }
 
@@ -51,6 +58,10 @@ func (e *jsiiProxy_EmrClusterTemplateStack) validateSplitArnParameters(arn *stri
 }
 
 func (e *jsiiProxy_EmrClusterTemplateStack) validateToJsonStringParameters(obj interface{}) error {
+	return nil
+}
+
+func (e *jsiiProxy_EmrClusterTemplateStack) validateToYamlStringParameters(obj interface{}) error {
 	return nil
 }
 

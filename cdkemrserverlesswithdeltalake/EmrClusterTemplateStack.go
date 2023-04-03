@@ -41,14 +41,14 @@ type EmrClusterTemplateStack interface {
 	// This value is resolved according to the following rules:
 	//
 	// 1. The value provided to `env.account` when the stack is defined. This can
-	//     either be a concrete account (e.g. `585695031111`) or the
-	//     `Aws.ACCOUNT_ID` token.
+	//    either be a concrete account (e.g. `585695031111`) or the
+	//    `Aws.ACCOUNT_ID` token.
 	// 3. `Aws.ACCOUNT_ID`, which represents the CloudFormation intrinsic reference
-	//     `{ "Ref": "AWS::AccountId" }` encoded as a string token.
+	//    `{ "Ref": "AWS::AccountId" }` encoded as a string token.
 	//
 	// Preferably, you should use the return value as an opaque string and not
 	// attempt to parse it to implement your logic. If you do, you must first
-	// check that it is a concerete value an not an unresolved token. If this
+	// check that it is a concrete value an not an unresolved token. If this
 	// value is an unresolved token (`Token.isUnresolved(stack.account)` returns
 	// `true`), this implies that the user wishes that this stack will synthesize
 	// into a **account-agnostic template**. In this case, your code should either
@@ -107,14 +107,14 @@ type EmrClusterTemplateStack interface {
 	// This value is resolved according to the following rules:
 	//
 	// 1. The value provided to `env.region` when the stack is defined. This can
-	//     either be a concerete region (e.g. `us-west-2`) or the `Aws.REGION`
-	//     token.
+	//    either be a concrete region (e.g. `us-west-2`) or the `Aws.REGION`
+	//    token.
 	// 3. `Aws.REGION`, which is represents the CloudFormation intrinsic reference
-	//     `{ "Ref": "AWS::Region" }` encoded as a string token.
+	//    `{ "Ref": "AWS::Region" }` encoded as a string token.
 	//
 	// Preferably, you should use the return value as an opaque string and not
 	// attempt to parse it to implement your logic. If you do, you must first
-	// check that it is a concerete value an not an unresolved token. If this
+	// check that it is a concrete value an not an unresolved token. If this
 	// value is an unresolved token (`Token.isUnresolved(stack.region)` returns
 	// `true`), this implies that the user wishes that this stack will synthesize
 	// into a **region-agnostic template**. In this case, your code should either
@@ -158,6 +158,12 @@ type EmrClusterTemplateStack interface {
 	// This can be used to define dependencies between any two stacks within an
 	// app, and also supports nested stacks.
 	AddDependency(target awscdk.Stack, reason *string)
+	// Adds an arbitary key-value pair, with information you want to record about the stack.
+	//
+	// These get translated to the Metadata section of the generated template.
+	// See: https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/metadata-section-structure.html
+	//
+	AddMetadata(key *string, value interface{})
 	// Add a Transform to this stack. A Transform is a macro that AWS CloudFormation uses to process your template.
 	//
 	// Duplicate values are removed when stack is synthesized.
@@ -183,8 +189,8 @@ type EmrClusterTemplateStack interface {
 	//
 	// The result will be:
 	//
-	//    <path.join('')><md5(path.join('/')>
-	//      "human"      "hash"
+	//   <path.join('')><md5(path.join('/')>
+	//     "human"      "hash"
 	//
 	// If the "human" part of the ID exceeds 240 characters, we simply trim it so
 	// the total ID doesn't exceed CloudFormation's 255 character limit.
@@ -194,22 +200,42 @@ type EmrClusterTemplateStack interface {
 	// Special cases:
 	//
 	// - If the path only contains a single component (i.e. it's a top-level
-	//    resource), we won't add the hash to it. The hash is not needed for
-	//    disamiguation and also, it allows for a more straightforward migration an
-	//    existing CloudFormation template to a CDK stack without logical ID changes
-	//    (or renames).
+	//   resource), we won't add the hash to it. The hash is not needed for
+	//   disambiguation and also, it allows for a more straightforward migration an
+	//   existing CloudFormation template to a CDK stack without logical ID changes
+	//   (or renames).
 	// - For aesthetic reasons, if the last components of the path are the same
-	//    (i.e. `L1/L2/Pipeline/Pipeline`), they will be de-duplicated to make the
-	//    resulting human portion of the ID more pleasing: `L1L2Pipeline<HASH>`
-	//    instead of `L1L2PipelinePipeline<HASH>`
+	//   (i.e. `L1/L2/Pipeline/Pipeline`), they will be de-duplicated to make the
+	//   resulting human portion of the ID more pleasing: `L1L2Pipeline<HASH>`
+	//   instead of `L1L2PipelinePipeline<HASH>`
 	// - If a component is named "Default" it will be omitted from the path. This
-	//    allows refactoring higher level abstractions around constructs without affecting
-	//    the IDs of already deployed resources.
+	//   allows refactoring higher level abstractions around constructs without affecting
+	//   the IDs of already deployed resources.
 	// - If a component is named "Resource" it will be omitted from the user-visible
-	//    path, but included in the hash. This reduces visual noise in the human readable
-	//    part of the identifier.
+	//   path, but included in the hash. This reduces visual noise in the human readable
+	//   part of the identifier.
 	AllocateLogicalId(cfnElement awscdk.CfnElement) *string
-	// Create a CloudFormation Export for a value.
+	// Create a CloudFormation Export for a string list value.
+	//
+	// Returns a string list representing the corresponding `Fn.importValue()`
+	// expression for this Export. The export expression is automatically wrapped with an
+	// `Fn::Join` and the import value with an `Fn::Split`, since CloudFormation can only
+	// export strings. You can control the name for the export by passing the `name` option.
+	//
+	// If you don't supply a value for `name`, the value you're exporting must be
+	// a Resource attribute (for example: `bucket.bucketName`) and it will be
+	// given the same name as the automatic cross-stack reference that would be created
+	// if you used the attribute in another Stack.
+	//
+	// One of the uses for this method is to *remove* the relationship between
+	// two Stacks established by automatic cross-stack references. It will
+	// temporarily ensure that the CloudFormation Export still exists while you
+	// remove the reference from the consuming stack. After that, you can remove
+	// the resource and the manual export.
+	//
+	// See `exportValue` for an example of this process.
+	ExportStringListValue(exportedValue interface{}, options *awscdk.ExportValueOptions) *[]*string
+	// Create a CloudFormation Export for a string value.
 	//
 	// Returns a string representing the corresponding `Fn.importValue()`
 	// expression for this Export. You can control the name for the export by
@@ -241,11 +267,11 @@ type EmrClusterTemplateStack interface {
 	// ### Deployment 1: break the relationship
 	//
 	// - Make sure `consumerStack` no longer references `bucket.bucketName` (maybe the consumer
-	//    stack now uses its own bucket, or it writes to an AWS DynamoDB table, or maybe you just
-	//    remove the Lambda Function altogether).
+	//   stack now uses its own bucket, or it writes to an AWS DynamoDB table, or maybe you just
+	//   remove the Lambda Function altogether).
 	// - In the `ProducerStack` class, call `this.exportValue(this.bucket.bucketName)`. This
-	//    will make sure the CloudFormation Export continues to exist while the relationship
-	//    between the two stacks is being broken.
+	//   will make sure the CloudFormation Export continues to exist while the relationship
+	//   between the two stacks is being broken.
 	// - Deploy (this will effectively only change the `consumerStack`, but it's safe to deploy both).
 	//
 	// ### Deployment 2: remove the bucket resource
@@ -264,7 +290,7 @@ type EmrClusterTemplateStack interface {
 	//
 	// The ARN will be formatted as follows:
 	//
-	//    arn:{partition}:{service}:{region}:{account}:{resource}{sep}{resource-name}
+	//   arn:{partition}:{service}:{region}:{account}:{resource}{sep}{resource-name}
 	//
 	// The required ARN pieces that are omitted will be taken from the stack that
 	// the 'scope' is attached to. If all ARN pieces are supplied, the supplied scope
@@ -321,6 +347,8 @@ type EmrClusterTemplateStack interface {
 	ToJsonString(obj interface{}, space *float64) *string
 	// Returns a string representation of this construct.
 	ToString() *string
+	// Convert an object, potentially containing tokens, to a YAML string.
+	ToYamlString(obj interface{}) *string
 }
 
 // The jsii proxy struct for EmrClusterTemplateStack
@@ -654,6 +682,17 @@ func (e *jsiiProxy_EmrClusterTemplateStack) AddDependency(target awscdk.Stack, r
 	)
 }
 
+func (e *jsiiProxy_EmrClusterTemplateStack) AddMetadata(key *string, value interface{}) {
+	if err := e.validateAddMetadataParameters(key, value); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		e,
+		"addMetadata",
+		[]interface{}{key, value},
+	)
+}
+
 func (e *jsiiProxy_EmrClusterTemplateStack) AddTransform(transform *string) {
 	if err := e.validateAddTransformParameters(transform); err != nil {
 		panic(err)
@@ -675,6 +714,22 @@ func (e *jsiiProxy_EmrClusterTemplateStack) AllocateLogicalId(cfnElement awscdk.
 		e,
 		"allocateLogicalId",
 		[]interface{}{cfnElement},
+		&returns,
+	)
+
+	return returns
+}
+
+func (e *jsiiProxy_EmrClusterTemplateStack) ExportStringListValue(exportedValue interface{}, options *awscdk.ExportValueOptions) *[]*string {
+	if err := e.validateExportStringListValueParameters(exportedValue, options); err != nil {
+		panic(err)
+	}
+	var returns *[]*string
+
+	_jsii_.Invoke(
+		e,
+		"exportStringListValue",
+		[]interface{}{exportedValue, options},
 		&returns,
 	)
 
@@ -822,6 +877,22 @@ func (e *jsiiProxy_EmrClusterTemplateStack) ToString() *string {
 		e,
 		"toString",
 		nil, // no parameters
+		&returns,
+	)
+
+	return returns
+}
+
+func (e *jsiiProxy_EmrClusterTemplateStack) ToYamlString(obj interface{}) *string {
+	if err := e.validateToYamlStringParameters(obj); err != nil {
+		panic(err)
+	}
+	var returns *string
+
+	_jsii_.Invoke(
+		e,
+		"toYamlString",
+		[]interface{}{obj},
 		&returns,
 	)
 

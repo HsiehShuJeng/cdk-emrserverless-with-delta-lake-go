@@ -1,5 +1,4 @@
 //go:build !no_runtime_type_checking
-// +build !no_runtime_type_checking
 
 // A construct for the quick demo of EMR Serverless.
 package cdkemrserverlesswithdeltalake
@@ -12,7 +11,7 @@ import (
 	"github.com/aws/constructs-go/constructs/v10"
 )
 
-func validateEmrStudioServiceRole_IsConstructParameters(x interface{}) error {
+func validateWorkSpaceBucket_IsConstructParameters(x interface{}) error {
 	if x == nil {
 		return fmt.Errorf("parameter x is required, but nil was provided")
 	}
@@ -20,7 +19,7 @@ func validateEmrStudioServiceRole_IsConstructParameters(x interface{}) error {
 	return nil
 }
 
-func validateNewEmrStudioServiceRoleParameters(scope constructs.Construct, name *string, props *EmrStudioServiceRoleProps) error {
+func validateNewWorkSpaceBucketParameters(scope constructs.Construct, name *string, props *WorkSpaceBucketProps) error {
 	if scope == nil {
 		return fmt.Errorf("parameter scope is required, but nil was provided")
 	}
@@ -29,9 +28,6 @@ func validateNewEmrStudioServiceRoleParameters(scope constructs.Construct, name 
 		return fmt.Errorf("parameter name is required, but nil was provided")
 	}
 
-	if props == nil {
-		return fmt.Errorf("parameter props is required, but nil was provided")
-	}
 	if err := _jsii_.ValidateStruct(props, func() string { return "parameter props" }); err != nil {
 		return err
 	}

@@ -1,5 +1,4 @@
 //go:build !no_runtime_type_checking
-// +build !no_runtime_type_checking
 
 // A construct for the quick demo of EMR Serverless.
 package cdkemrserverlesswithdeltalake
@@ -22,6 +21,18 @@ func (e *jsiiProxy_EmrClusterTemplateStack) validateAddDependencyParameters(targ
 	return nil
 }
 
+func (e *jsiiProxy_EmrClusterTemplateStack) validateAddMetadataParameters(key *string, value interface{}) error {
+	if key == nil {
+		return fmt.Errorf("parameter key is required, but nil was provided")
+	}
+
+	if value == nil {
+		return fmt.Errorf("parameter value is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func (e *jsiiProxy_EmrClusterTemplateStack) validateAddTransformParameters(transform *string) error {
 	if transform == nil {
 		return fmt.Errorf("parameter transform is required, but nil was provided")
@@ -33,6 +44,18 @@ func (e *jsiiProxy_EmrClusterTemplateStack) validateAddTransformParameters(trans
 func (e *jsiiProxy_EmrClusterTemplateStack) validateAllocateLogicalIdParameters(cfnElement awscdk.CfnElement) error {
 	if cfnElement == nil {
 		return fmt.Errorf("parameter cfnElement is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func (e *jsiiProxy_EmrClusterTemplateStack) validateExportStringListValueParameters(exportedValue interface{}, options *awscdk.ExportValueOptions) error {
+	if exportedValue == nil {
+		return fmt.Errorf("parameter exportedValue is required, but nil was provided")
+	}
+
+	if err := _jsii_.ValidateStruct(options, func() string { return "parameter options" }); err != nil {
+		return err
 	}
 
 	return nil
@@ -121,6 +144,14 @@ func (e *jsiiProxy_EmrClusterTemplateStack) validateSplitArnParameters(arn *stri
 }
 
 func (e *jsiiProxy_EmrClusterTemplateStack) validateToJsonStringParameters(obj interface{}) error {
+	if obj == nil {
+		return fmt.Errorf("parameter obj is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func (e *jsiiProxy_EmrClusterTemplateStack) validateToYamlStringParameters(obj interface{}) error {
 	if obj == nil {
 		return fmt.Errorf("parameter obj is required, but nil was provided")
 	}
