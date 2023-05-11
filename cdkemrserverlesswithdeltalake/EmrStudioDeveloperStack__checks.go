@@ -1,6 +1,5 @@
 //go:build !no_runtime_type_checking
 
-// A construct for the quick demo of EMR Serverless.
 package cdkemrserverlesswithdeltalake
 
 import (

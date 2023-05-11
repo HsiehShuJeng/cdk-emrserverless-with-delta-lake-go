@@ -1,4 +1,3 @@
-// A construct for the quick demo of EMR Serverless.
 package cdkemrserverlesswithdeltalake
 
 import (
