@@ -12,6 +12,8 @@ type EmrStudioServiceRoleProps struct {
 	// IMPORTANT: If you specify a name, you cannot perform updates that require replacement of this resource. You can perform updates that require no or some interruption. If you must replace the resource, specify a new name.
 	//
 	// If you specify a name, you must specify the CAPABILITY_NAMED_IAM value to acknowledge your template's capabilities. For more information, see Acknowledging IAM Resources in AWS CloudFormation Templates.
+	// Default: - 'emr-studio-service-role'.
+	//
 	RoleName *string `field:"optional" json:"roleName" yaml:"roleName"`
 }
 

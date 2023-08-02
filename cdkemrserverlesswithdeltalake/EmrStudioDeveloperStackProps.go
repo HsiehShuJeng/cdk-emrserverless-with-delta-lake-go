@@ -9,6 +9,8 @@ type EmrStudioDeveloperStackProps struct {
 	// an IAM group you wish to associate with the Portfolio for EMR cluster template.
 	Group awsiam.IGroup `field:"optional" json:"group" yaml:"group"`
 	// The provider name in a Service Catalog for EMR cluster templates.
+	// Default: - 'scott.hsieh'
+	//
 	ProviderName *string `field:"optional" json:"providerName" yaml:"providerName"`
 	// an IAM role you wish to associate with the Portfolio for EMR cluster template.
 	Role awsiam.IRole `field:"optional" json:"role" yaml:"role"`

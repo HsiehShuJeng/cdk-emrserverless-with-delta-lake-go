@@ -11,6 +11,8 @@ type EmrServerlessProps struct {
 	// You can select the subnets from the default VPC in your AWS account.
 	SubnetIds *[]*string `field:"optional" json:"subnetIds" yaml:"subnetIds"`
 	// Used by the EMR Studio.
+	// Default: - 'The default VPC will be used.'
+	//
 	VpcId *string `field:"optional" json:"vpcId" yaml:"vpcId"`
 }
 
