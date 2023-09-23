@@ -76,6 +76,10 @@ func validateEmrClusterTemplateStack_OfParameters(construct constructs.IConstruc
 	return nil
 }
 
+func (j *jsiiProxy_EmrClusterTemplateStack) validateSetTerminationProtectionParameters(val *bool) error {
+	return nil
+}
+
 func validateNewEmrClusterTemplateStackParameters(scope constructs.Construct, id *string) error {
 	return nil
 }

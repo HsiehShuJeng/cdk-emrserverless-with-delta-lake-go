@@ -182,6 +182,14 @@ func validateEmrClusterTemplateStack_OfParameters(construct constructs.IConstruc
 	return nil
 }
 
+func (j *jsiiProxy_EmrClusterTemplateStack) validateSetTerminationProtectionParameters(val *bool) error {
+	if val == nil {
+		return fmt.Errorf("parameter val is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func validateNewEmrClusterTemplateStackParameters(scope constructs.Construct, id *string) error {
 	if scope == nil {
 		return fmt.Errorf("parameter scope is required, but nil was provided")
