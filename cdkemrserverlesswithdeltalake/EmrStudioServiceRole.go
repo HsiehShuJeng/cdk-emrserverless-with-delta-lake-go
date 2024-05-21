@@ -16,7 +16,7 @@ import (
 // ```ts
 // const workSpaceBucket = new WorkSpaceBucket(this, 'WorkSpace');
 // const emrStudioServiceRole = new EmrStudioServiceRole(this, 'Service', {
-//       workSpaceBucket: workSpaceBucket
+//      workSpaceBucket: workSpaceBucket
 // });
 // ```.
 type EmrStudioServiceRole interface {

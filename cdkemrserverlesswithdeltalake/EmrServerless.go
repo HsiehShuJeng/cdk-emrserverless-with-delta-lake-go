@@ -16,35 +16,35 @@ import (
 //
 // // custom deployment references
 // new EmrServerless(this, 'EmrServerless', {
-//     vpcId: 'vpc-idididid',
+//    vpcId: 'vpc-idididid',
 // });
 //
 // new EmrServerless(this, 'EmrServerless', {
-//     vpcId: 'vpc-idididid',
-//     subnetIds: ['subnet-eeeee', 'subnet-fffff']
+//    vpcId: 'vpc-idididid',
+//    subnetIds: ['subnet-eeeee', 'subnet-fffff']
 // });
 //
 // const myRole = new iam.Role.fromRoleName('MyRole');
 // new EmrServerless(this, 'EmrServerless', {
-//     serviceCatalogProps: {
-//         role: myRole
-//     }
+//    serviceCatalogProps: {
+//        role: myRole
+//    }
 // });
 //
 // const myUser = new iam.Role.fromUserName('MyUser');
 // new EmrServerless(this, 'EmrServerless', {
-//     vpcId: 'vpc-idididid',
-//     subnetIds: ['subnet-eeeee', 'subnet-fffff'],
-//     serviceCatalogProps: {
-//         user: myUser
-//     }
+//    vpcId: 'vpc-idididid',
+//    subnetIds: ['subnet-eeeee', 'subnet-fffff'],
+//    serviceCatalogProps: {
+//        user: myUser
+//    }
 // });
 //
 // const myGroup = new iam.Group.fromGroupName('MyGroup');
 // new EmrServerless(this, 'EmrServerless', {
-//     serviceCatalogProps: {
-//         group: myGroup
-//     }
+//    serviceCatalogProps: {
+//        group: myGroup
+//    }
 // });
 // ```.
 type EmrServerless interface {

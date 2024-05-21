@@ -18,8 +18,8 @@ import (
 // ```ts
 // const workspaceBucket = new WorkSpaceBucket(this, 'EmrStudio');
 // const emrStudio = new EmrStudio(this, '', {
-//     workSpaceBucket: workspaceBucket,
-//     subnetIds: ['subnet1', 'subnet2', 'subnet3']
+//    workSpaceBucket: workspaceBucket,
+//    subnetIds: ['subnet1', 'subnet2', 'subnet3']
 // });
 // ```.
 type EmrStudio interface {

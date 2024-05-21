@@ -21,15 +21,15 @@ import (
 //
 // ```ts
 // const product = new servicecatalog.CloudFormationProduct(this, 'MyFirstProduct', {
-//     productName: 'EMR_6.6.0',
-//     owner: 'scott.hsieh',
-//     description: 'EMR cluster with 6.6.0 version',
-//     productVersions: [
-//       {
-//         productVersionName: 'v1',
-//         validateTemplate: true,
-//         cloudFormationTemplate: servicecatalog.CloudFormationTemplate.fromProductStack(new EmrClusterTemplateStack(this, 'EmrStudio')),
-//       },
+//    productName: 'EMR_6.6.0',
+//    owner: 'scott.hsieh',
+//    description: 'EMR cluster with 6.6.0 version',
+//    productVersions: [
+//      {
+//        productVersionName: 'v1',
+//        validateTemplate: true,
+//        cloudFormationTemplate: servicecatalog.CloudFormationTemplate.fromProductStack(new EmrClusterTemplateStack(this, 'EmrStudio')),
+//      },
 // ],
 // });
 // ```.
