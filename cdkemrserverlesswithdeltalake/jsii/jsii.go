@@ -13,7 +13,7 @@ import (
 	constructs "github.com/aws/constructs-go/constructs/v10/jsii"
 )
 
-//go:embed cdk-emrserverless-with-delta-lake-2.0.722.tgz
+//go:embed cdk-emrserverless-with-delta-lake-2.0.723.tgz
 var tarball []byte
 
 // Initialize loads the necessary packages in the @jsii/kernel to support the enclosing module.
@@ -24,5 +24,5 @@ func Initialize() {
 	constructs.Initialize()
 
 	// Load this library into the kernel
-	_jsii_.Load("cdk-emrserverless-with-delta-lake", "2.0.722", tarball)
+	_jsii_.Load("cdk-emrserverless-with-delta-lake", "2.0.723", tarball)
 }
